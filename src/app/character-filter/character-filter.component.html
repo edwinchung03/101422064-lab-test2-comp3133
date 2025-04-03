@@ -1,0 +1,76 @@
+<!-- Main Page Container -->
+<div class="page-container">
+  <!-- Page Header -->
+  <header class="page-header">
+    <div class="header-content">
+      <h1>Harry Potter Characters</h1>
+    </div>
+  </header>
+
+  <div class="content-wrapper">
+    <!-- Filter Sidebar -->
+    <aside class="filter-section-wrapper">
+      <div class="card filter-card">
+        <div class="card-body">
+          <div class="filter-header-wrap">
+            <h3>Filters</h3>
+            <a (click)="removeFilter()">Clear</a>
+          </div>  
+          <ul class="filter-buttons">
+            <li
+              *ngFor="let house of characterHouses; let i = index"
+              [ngClass]="houseSelectedIndex === i ? 'active' : ''"
+              (click)="characterFilter(i, house)"
+            >
+              {{ house }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+
+    <!-- character Grid -->
+    <section class="character-grid">
+      <ng-container
+        *ngIf="
+          paginatedCharacters && paginatedCharacters.length > 0;
+          else nocharacters
+        "
+      >
+        <div *ngFor="let data of paginatedCharacters" class="character-card">
+          <a routerLink="/{{ data.name }}" class="character-link">
+            <div class="character-info">
+              <figure>
+                <img
+                  src="{{ data.image }}"
+                  width="120"
+                  height="120"
+                />
+              </figure>
+              <h2>{{ data.name }}</h2>
+              <p><strong>House:</strong> {{ data.house }}</p>
+            </div>
+          </a>
+        </div>
+      </ng-container>
+    </section>
+
+    <!-- No characters Found Message -->
+    <ng-template #nocharacters>
+      <div class="no-results">
+        <p>No characters found for the selected filter.</p>
+      </div>
+    </ng-template>
+  </div>
+
+  <!-- Paginator -->
+  <div class="paginator-container">
+    <mat-paginator
+      [length]="characters.length"
+      [pageSize]="6"
+      [pageSizeOptions]="[6]"
+      (page)="onPageChange($event)"
+    >
+    </mat-paginator>
+  </div>
+</div>

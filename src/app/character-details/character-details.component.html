@@ -1,0 +1,33 @@
+<div class="wrapper">
+  <!-- Main Content -->
+  <div class="content">
+    <div class="page-container">
+      <header class="page-header">
+        <h1>Harry Potter Character Details</h1>
+      </header>
+
+      <div class="character-details-card">
+        <div class="above_content">
+          <div class="image">
+            <img
+              src="{{ singleCharacter.image }}"
+            />
+          </div>
+          <div class="character_info">
+            <h2>Character - {{ singleCharacter.name }}</h2>
+            <p><strong>House:</strong> {{ singleCharacter.house }}</p>
+            <p><strong>Actor:</strong> {{ singleCharacter.actor }}</p>
+            <p><strong>Wizard:</strong> {{ singleCharacter.wizard }}</p>
+            <p><strong>Species:</strong> {{ singleCharacter.species }}</p>
+            <p><strong>Ancestor:</strong> {{ singleCharacter.ancestry }}</p>
+            <h2>Wand</h2>
+            <p><strong>Wand Wood:</strong> {{ singleCharacter.Wand.wood }}</p>
+            <p><strong>Wand Core:</strong> {{ singleCharacter.Wand.core }}</p>
+            <p><strong>Wand Length:</strong> {{ singleCharacter.and.length }}</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
