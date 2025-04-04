@@ -10,21 +10,22 @@ import { HarryPotterService } from '../network/harry-potter.service';
 export class CharacterDetailsComponent implements OnInit {
   singleCharacter: any;
   characterId: any;
+
   constructor(
     private route: ActivatedRoute,
-    private harrypotterService: HarryPotterService
+    private harryPotterService: HarryPotterService
   ) {}
 
   ngOnInit() {
     this.characterId = this.route.snapshot.params['id'];
-    this.getSingleCharacter();
+    this.getSingleMission();
   }
 
-  getSingleCharacter() {
-    this.harrypotterService
+  getSingleMission() {
+    this.harryPotterService
       .getCharacterById(this.characterId)
       .subscribe((data: any) => {
-        this.singleCharacter = data;
+        this.singleCharacter = data[0];
         console.log(this.singleCharacter);
       });
   }
